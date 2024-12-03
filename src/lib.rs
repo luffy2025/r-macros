@@ -16,3 +16,19 @@ macro_rules! my_vec {
     };
     () => {};
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_my_macro() {
+        my_macro!();
+    }
+
+    #[test]
+    fn test_my_vec() {
+        let v = my_vec![1, 2, 3];
+        assert_eq!(v, vec![1, 2, 3]);
+    }
+}
