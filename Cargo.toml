@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.93"
+futures = { version = "0.3.31" }
+tokio = { version = "1.42.0", features = ["rt", "macros", "rt-multi-thread"] }
