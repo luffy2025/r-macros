@@ -14,6 +14,7 @@ pub fn process_enum_from(input: DeriveInput) -> TokenStream {
     // for each variant, generate a From impl
     let from_impls = variants.iter().map(|variant| {
         let var = &variant.ident;
+        let gen = &input.generics;
         match &variant.fields {
             syn::Fields::Unnamed(fields) => {
                 if fields.unnamed.len() != 1 {
@@ -22,7 +23,7 @@ pub fn process_enum_from(input: DeriveInput) -> TokenStream {
                     let field = &fields.unnamed.first().expect("should have 1 field");
                     let ty = &field.ty;
                     quote! {
-                        impl From<#ty> for #ident {
+                        impl #gen From<#ty> for #ident #gen {
                             fn from(v: #ty) -> Self {
                                 #ident::#var(v)
                             }
