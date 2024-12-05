@@ -2,7 +2,7 @@ use proc_macro2::TokenStream;
 use quote::quote;
 use syn::DeriveInput;
 
-pub fn process_enum_from(input: DeriveInput) -> TokenStream {
+pub(crate) fn process_enum_from(input: DeriveInput) -> TokenStream {
     // get the ident
     let ident = input.ident;
     // get enum variants
