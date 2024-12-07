@@ -10,8 +10,9 @@ struct AutoDerefInfo {
     ident: syn::Ident,
     generics: syn::Generics,
     data: Data<(), AutoDerefFieldsInfo>,
-
+    #[darling(default)]
     mutable: bool,
+    #[darling(default)]
     field: Option<syn::Ident>,
 }
 
@@ -69,9 +70,4 @@ pub(crate) fn process_auto_deref(input: DeriveInput) -> TokenStream {
     quote! {
         #(#code)*
     }
-}
-
-#[allow(unused)]
-pub(crate) fn process_auto_debug(input: DeriveInput) -> TokenStream {
-    quote! {}
 }

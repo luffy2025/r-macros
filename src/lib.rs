@@ -1,8 +1,10 @@
-mod auto;
+mod auto_debug;
+mod auto_deref;
 mod enum_from;
 mod enum_from_darling;
 
-use crate::auto::{process_auto_debug, process_auto_deref};
+use crate::auto_debug::process_auto_debug;
+use crate::auto_deref::process_auto_deref;
 use crate::enum_from::process_enum_from;
 use crate::enum_from_darling::process_enum_from_darling;
 use proc_macro::TokenStream;
