@@ -11,17 +11,14 @@ struct AutoDebugInfo {
     data: Data<(), AutoDerefFieldsInfo>,
 }
 
-#[allow(unused)]
 #[derive(Debug, FromField)]
 #[darling(attributes(debug))]
 struct AutoDerefFieldsInfo {
     ident: Option<syn::Ident>,
-    ty: syn::Type,
     #[darling(default)]
     skip: bool,
 }
 
-#[allow(unused)]
 pub(crate) fn process_auto_debug(input: DeriveInput) -> TokenStream {
     let AutoDebugInfo {
         ident,
